@@ -70,6 +70,7 @@ The library provides several convenient methods for saving and retrieving data:<
    This method allow to save string set into data store.<br/>
  - ```getStringSet(context: Context, key: String): Set<String>?```<br/> Read the string set which saved using its key.
     <br/><br/>
+    
     ***Remember: Always use any method from this library in lifecycle scope.***
    ### Example:
      ```
@@ -85,7 +86,7 @@ The library provides several convenient methods for saving and retrieving data:<
 
           val key = "Key1"
 
-          val ds = DataStorage.getInstance(this)
+          val ds = DataStorage.getInstance(context = this, name = "Any name") // name is optional -by default is the package name- only context is the required parameter
           lifecycleScope.launch {
               ds.putString(this@MainActivity, key, "Great Work !")
           }
