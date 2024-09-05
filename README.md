@@ -30,15 +30,6 @@ Key Features:
  - Add the dependency 
  
      ```
-      android {
-        ...
-        packaging {
-            resources {
-                excludes += "META-INF/NOTICE.md"
-                excludes += "META-INF/LICENSE.md"
-            }
-        }
-      }
       dependencies {
             implementation "com.github.MohamedKandel:datastore:latest-release"
         }
