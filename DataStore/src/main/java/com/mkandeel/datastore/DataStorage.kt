@@ -15,7 +15,7 @@ import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 
-class DataStorage(context: Context, name: String = context.packageName) {
+class DataStorage private constructor(context: Context, name: String = context.packageName) {
 
     private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name)
 
@@ -36,6 +36,12 @@ class DataStorage(context: Context, name: String = context.packageName) {
         return prefs[key]
     }
 
+    private suspend fun <T> remove(context: Context, key: Preferences.Key<T>) {
+        context.dataStore.edit {
+            it.remove(key)
+        }
+    }
+
     suspend fun putString(context: Context, key: String, value: String) {
         val dataStoreKey = stringPreferencesKey(key)
         context.dataStore.edit {
@@ -46,6 +52,11 @@ class DataStorage(context: Context, name: String = context.packageName) {
     suspend fun getString(context: Context, key: String): String? {
         val dataStoreKey = stringPreferencesKey(key)
         return get(context, dataStoreKey)
+    }
+
+    suspend fun removeStringValue(context: Context, key: String) {
+        val dataStoreKey = stringPreferencesKey(key)
+        remove(context, dataStoreKey)
     }
 
     suspend fun putBoolean(context: Context, key: String, value: Boolean) {
@@ -60,6 +71,11 @@ class DataStorage(context: Context, name: String = context.packageName) {
         return get(context, dataStoreKey)
     }
 
+    suspend fun removeBooleanValue(context: Context, key: String) {
+        val dataStoreKey = booleanPreferencesKey(key)
+        remove(context, dataStoreKey)
+    }
+
     suspend fun putInt(context: Context, key: String, value: Int) {
         val dataStoreKey = intPreferencesKey(key)
         context.dataStore.edit {
@@ -70,6 +86,11 @@ class DataStorage(context: Context, name: String = context.packageName) {
     suspend fun getInt(context: Context, key: String): Int? {
         val dataStoreKey = intPreferencesKey(key)
         return get(context, dataStoreKey)
+    }
+
+    suspend fun removeIntValue(context: Context, key: String) {
+        val dataStoreKey = intPreferencesKey(key)
+        remove(context,dataStoreKey)
     }
 
     suspend fun putDouble(context: Context, key: String, value: Double) {
@@ -84,6 +105,11 @@ class DataStorage(context: Context, name: String = context.packageName) {
         return get(context, dataStoreKey)
     }
 
+    suspend fun removeDoubleValue(context: Context, key: String) {
+        val dataStoreKey = doublePreferencesKey(key)
+        remove(context,dataStoreKey)
+    }
+
     suspend fun putFloat(context: Context, key: String, value: Float) {
         val dataStoreKey = floatPreferencesKey(key)
         context.dataStore.edit {
@@ -94,6 +120,11 @@ class DataStorage(context: Context, name: String = context.packageName) {
     suspend fun getFloat(context: Context, key: String): Float? {
         val dataStoreKey = floatPreferencesKey(key)
         return get(context, dataStoreKey)
+    }
+
+    suspend fun removeFloatValue(context: Context, key: String) {
+        val dataStoreKey = floatPreferencesKey(key)
+        remove(context, dataStoreKey)
     }
 
     suspend fun putLong(context: Context, key: String, value: Long) {
@@ -108,6 +139,11 @@ class DataStorage(context: Context, name: String = context.packageName) {
         return get(context, dataStoreKey)
     }
 
+    suspend fun removeLongValue(context: Context, key: String) {
+        val dataStoreKey = longPreferencesKey(key)
+        remove(context, dataStoreKey)
+    }
+
     suspend fun putByteArray(context: Context, key: String, value: ByteArray) {
         val dataStoreKey = byteArrayPreferencesKey(key)
         context.dataStore.edit {
@@ -120,6 +156,11 @@ class DataStorage(context: Context, name: String = context.packageName) {
         return get(context, dataStoreKey)
     }
 
+    suspend fun removeByteArrayValue(context: Context, key: String) {
+        val dataStoreKey = byteArrayPreferencesKey(key)
+        remove(context, dataStoreKey)
+    }
+
     suspend fun putStringSet(context: Context, key: String, value: Set<String>) {
         val dataStoreKey = stringSetPreferencesKey(key)
         context.dataStore.edit {
@@ -130,5 +171,16 @@ class DataStorage(context: Context, name: String = context.packageName) {
     suspend fun getStringSet(context: Context, key: String): Set<String>? {
         val dataStoreKey = stringSetPreferencesKey(key)
         return get(context, dataStoreKey)
+    }
+
+    suspend fun removeStringSetValue(context: Context, key: String) {
+        val dataStoreKey = stringSetPreferencesKey(key)
+        remove(context, dataStoreKey)
+    }
+
+    suspend fun clearAll(context: Context) {
+        context.dataStore.edit {
+            it.clear()
+        }
     }
 }
