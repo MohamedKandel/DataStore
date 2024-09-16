@@ -1,6 +1,6 @@
 ![Static Badge](https://img.shields.io/badge/Android-green) 
 ![Static Badge](https://img.shields.io/badge/Kotlin-mauve)
-![Static Badge](https://img.shields.io/badge/latest%20release:-1.0.1-red)
+![Static Badge](https://img.shields.io/badge/latest%20release:-1.1.0-red)
 ![Static Badge](https://img.shields.io/badge/jitpackio-black)
 
 
@@ -41,34 +41,44 @@ The library provides several convenient methods for saving and retrieving data:<
  - ```putString(context: Context, key: String, value: String)```<br/>
    This method allow to save string into data store.<br/>
  - ```getString(context: Context, key: String): String?```<br/> Read the string which saved using its key.
+ - ```removeStringValue(context: Context, key: String)```<br/> Remove saved string using its key.
  
  - ```putInt(context: Context, key: String, value: Int)```<br/>
    This method allow to save integer into data store.<br/>
  - ```getInt(context: Context, key: String): Int?```<br/> Read the integer which saved using its key.
+ - ```removeIntValue(context: Context, key: String)```<br/> Remove saved integer using its key.
    
  - ```putBoolean(context: Context, key: String, value: Boolean)```<br/>
    This method allow to save boolean into data store.<br/>
  - ```getBoolean(context: Context, key: String): Boolean?```<br/> Read the boolean which saved using its key.
+ - ```removeBooleanValue(context: Context, key: String)```<br/> Remove saved boolean value using its key.
   
  - ```putDouble(context: Context, key: String, value: Double)```<br/>
    This method allow to save double into data store.<br/>
  - ```getDouble(context: Context, key: String): Double?```<br/> Read the double which saved using its key.
+ - ```removeDoubleValue(context: Context, key: String)```<br/> Remove saved double value using its key.
  
  - ```putFloat(context: Context, key: String, value: Float)```<br/>
    This method allow to save float into data store.<br/>
  - ```getFloat(context: Context, key: String): Float?```<br/> Read the float which saved using its key.
+ - ```removeFloatValue(context: Context, key: String)```<br/> Remove saved float value using its key.
 
 - ```putLong(context: Context, key: String, value: Long)```<br/>
    This method allow to save long into data store.<br/>
  - ```getLong(context: Context, key: String): Long?```<br/> Read the long which saved using its key.
+ - ```removeLongValue(context: Context, key: String)```<br/> Remove saved long value using its key.
 
 - ```putByteArray(context: Context, key: String, value: ByteArray)```<br/>
    This method allow to save byte array into data store.<br/>
  - ```getByteArray(context: Context, key: String): ByteArray?```<br/> Read the byte array which saved using its key.
+ - ```removeByteArrayValue(context: Context, key: String)```<br/> Remove saved byte array using its key.
 
  - ```putStringSet(context: Context, key: String, value: Set<String>)```<br/>
    This method allow to save string set into data store.<br/>
  - ```getStringSet(context: Context, key: String): Set<String>?```<br/> Read the string set which saved using its key.
+ - ```removeStringSetValue(context: Context, key: String)```<br/> Remove saved string set using its key.
+
+ - ```clearAll(context: Context)```<br/> clear all saved values in datastore
     <br/><br/>
     
     ***Remember: Always use any method from this library in lifecycle scope.***
