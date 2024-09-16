@@ -90,7 +90,7 @@ class DataStorage private constructor(context: Context, name: String = context.p
 
     suspend fun removeIntValue(context: Context, key: String) {
         val dataStoreKey = intPreferencesKey(key)
-        remove(context,dataStoreKey)
+        remove(context, dataStoreKey)
     }
 
     suspend fun putDouble(context: Context, key: String, value: Double) {
@@ -107,7 +107,7 @@ class DataStorage private constructor(context: Context, name: String = context.p
 
     suspend fun removeDoubleValue(context: Context, key: String) {
         val dataStoreKey = doublePreferencesKey(key)
-        remove(context,dataStoreKey)
+        remove(context, dataStoreKey)
     }
 
     suspend fun putFloat(context: Context, key: String, value: Float) {
